@@ -104,7 +104,7 @@
             "type": "lua",
             "request": "launch",
             "name": "Launch",
-            "program": "${workspaceFolder}/entitas\\GroupEvent.lua"
+            "program": "${workspaceFolder}\\example\\HelloWorld\\Example.lua"
         }
     ]
 }
