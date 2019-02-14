@@ -45,8 +45,14 @@ M.__tostring = function(t)
 )
 end
 
+
 function M:match_entity(entity)
+    -- self._all是在调用Matcher(component)创建Matcher table时定义的
+    -- 注意此处的self是一个Matcher
+    -- has_all就是用entity的_components中的数据与self._all中所有的数据进行对比。
+    -- 如果_all中出现任何一个不在_components中的数据就返回false
     local all_cond = not self._all or entity:has_all(self._all)
+    -- 开始的原理都一样，只不过any的判断是只要存在一个就return true
     local any_cond = not self._any or entity:has_any(self._any)
     local none_cond = not self._none or not entity:has_any(self._none)
 
@@ -101,6 +107,8 @@ end
 
 local matcher_cache = {}
 
+
+-- 最终返回的是一个table，这个table包含_all\_any\_none，以及M中的方法
 return function (all_of_tb, any_of_tb, none_of_tb)
     local key = string_components_ex(all_of_tb)..string_components_ex(any_of_tb)..string_components_ex(none_of_tb)
     local tb = matcher_cache[key]

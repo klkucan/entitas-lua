@@ -64,6 +64,7 @@ This is used by the context to manage the group.
 function M:handle_entity_silently(entity)
     assert(entity)
     if self._matcher:match_entity(entity) then
+        -- 满足条件就将entity加入到_add_entity_silently
         self:_add_entity_silently(entity)
     else
         self:_remove_entity_silently(entity)

@@ -50,7 +50,7 @@ function M:create_entity()
         entity.on_component_removed:add(self.comp_removed)
         entity.on_component_replaced:add(self.comp_replaced)
     end
-
+    -- 每个Entity分配一个UUID，自增int
     entity:activate(self._uuid)
     self._uuid = self._uuid + 1
     self.entities[entity._uid] = entity
