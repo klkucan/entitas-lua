@@ -71,8 +71,8 @@ function M:add(comp_type, ...)
         error("Cannot add another component")
     end
 
-    local new_comp = comp_type.new(...)
-    self._components[comp_type._name] = new_comp
+    local new_comp = comp_type.new(...) -- message赋值为"HelloWorld"
+    self._components[comp_type._name] = new_comp -- _name == DebugMessage
     self.on_component_added(self, new_comp)
 end
 
